@@ -4,6 +4,33 @@ This repository contains a [React](http://reactjs.org) component that allows to 
 
 ---
 
+# The Snippet
+```
+npm install --save rosmaro rosmaro-in-memory-storage rosmaro-process-wide-lock rosmaro-react
+mkdir src/handlers && touch src/handlers/all.js && touch src/graph.json
+```
+
+```javascript
+import makeStorage from 'rosmaro-in-memory-storage';
+import makeLock from 'rosmaro-process-wide-lock';
+import RosmaroReact from 'rosmaro-react';
+import graph from './graph.json'; // The generated graph
+import handlers from './handlers/all';
+
+// ...
+
+const rosmaroOpts = {
+  graph,
+  handlers,
+  storage: makeStorage(),
+  lock: makeLock()
+};
+
+ReactDOM.render(<RosmaroReact {...rosmaroOpts} />, document.getElementById('root'));
+```
+
+# How to use RosmaroReact?
+
 First, we need to get the component.
 ```
 npm i rosmaro-react --save
