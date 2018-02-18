@@ -21,7 +21,7 @@
     "selenium-webdriver": "^3.6.0"
   },
   "peerDependencies": {
-    "rosmaro": "0.1.x",
+    "rosmaro": "0.7.x",
     "react": ">=15.0.0"
   },
   "main": "./lib/RosmaroReact.js",
