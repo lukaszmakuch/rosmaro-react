@@ -16,7 +16,7 @@ const rosmaroOpts = {
   lock: makeLock(),
   afterTransition: () => {
     const counter = document.getElementById('transition-counter');
-    counter.value = parseInt(counter.value) + 1;
+    counter.value = parseInt(counter.value, 10) + 1;
   }
 };
 
