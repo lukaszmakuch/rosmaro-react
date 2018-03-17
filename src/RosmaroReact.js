@@ -4,21 +4,20 @@ import rosmaro from 'rosmaro';
 class RosmaroReact extends React.Component {
   constructor(props) {
     super(props);
-    this.view = null;
+    this.state = {
+      view: null
+    }
 
-    this.refreshView = () => {
-      Promise.resolve(model.render()).then(view => {
-        this.view = view;
-        this.forceUpdate();
-      })
-    };
+  }
 
-    const model = rosmaro(Object.assign({}, props, {
-      afterTransition: () => {
-        if (props.afterTransition) props.afterTransition();
-        this.refreshView();
-      }
-    }));
+  refreshView() {
+    Promise.resolve(
+      rosmaro(Object.assign({}, this.props, {
+        afterTransition: () => {
+          if (this.props.afterTransition) this.props.afterTransition();
+          this.refreshView();
+        }
+      })).render()).then(view => this.setState({ view }))
   }
 
   componentDidMount() {
@@ -26,8 +25,8 @@ class RosmaroReact extends React.Component {
   }
 
   render() {
-    return this.view;
+    return this.state.view;
   }
-};
+}
 
 export default RosmaroReact;
