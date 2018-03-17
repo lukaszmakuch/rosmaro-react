@@ -4,6 +4,8 @@ This repository contains a [React](http://reactjs.org) component that allows to 
 
 ---
 
+# Changed from forced update to SetState
+
 # The Snippet
 ```
 npm install --save rosmaro rosmaro-in-memory-storage rosmaro-process-wide-lock rosmaro-react
