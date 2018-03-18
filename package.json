@@ -4,9 +4,10 @@
   "description": "Visual automata-based programming for React",
   "keywords": [
     "state machine",
-    "ui"
+    "automata-based programming",
+    "finite state machine"
   ],
-  "version": "0.0.2",
+  "version": "0.0.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/lukaszmakuch/rosmaro-react.git"
