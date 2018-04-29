@@ -19,7 +19,8 @@
     "babel-preset-react": "^6.24.1",
     "chromedriver": "^2.33.2",
     "jest": "^21.2.1",
-    "selenium-webdriver": "^3.6.0"
+    "selenium-webdriver": "^3.6.0",
+    "hoek": "^4.2.1"
   },
   "peerDependencies": {
     "rosmaro": "0.7.x",
