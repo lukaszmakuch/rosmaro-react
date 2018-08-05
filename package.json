@@ -14,11 +14,12 @@
   },
   "author": "Łukasz Makuch <kontakt@lukaszmakuch.pl> (http://lukaszmakuch.pl)",
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-preset-es2015": "^6.24.1",
-    "chromedriver": "^2.33.2",
-    "jest": "^21.2.1",
-    "selenium-webdriver": "^3.6.0"
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "chromedriver": "^2.41.0",
+    "jest": "^23.4.2",
+    "selenium-webdriver": "^4.0.0-alpha.1",
+    "lodash": ">=4.17.5"
   },
   "peerDependencies": {
     "rosmaro": "0.8.x",
@@ -29,7 +30,7 @@
   },
   "main": "./lib/RosmaroReact.js",
   "scripts": {
-    "build": "./node_modules/.bin/babel ./src --out-dir ./lib --presets es2015",
+    "build": "./node_modules/.bin/babel ./src --out-dir ./lib --presets env",
     "test": "./node_modules/.bin/jest ./test",
     "prepublish": "npm run build"
   }
