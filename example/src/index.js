@@ -2,25 +2,43 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import graph from './graph.json';
-import off from './off';
-import on from './on';
-import RosmaroReact from 'rosmaro-react';
-import makeStorage from 'rosmaro-in-memory-storage';
-import makeLock from 'rosmaro-process-wide-lock';
+import rosmaro from 'rosmaro';
+import makeBindings from './bindings';
+import {Provider} from 'react-redux'
+import {typeHandler, partialReturns, defaultHandler} from 'rosmaro-binding-utils';
+import rosmaroComponent from 'rosmaro-react';
+import {makeReducer, effectDispatcher} from 'rosmaro-redux';
+import createSagaMiddleware from 'redux-saga';
+import {createStore, applyMiddleware} from 'redux';
+
 import registerServiceWorker from './registerServiceWorker';
 
-const rosmaroOpts = {
-  graph,
-  handlers: {on, off},
-  storage: makeStorage(),
-  lock: makeLock(),
-  afterTransition: () => {
-    const counter = document.getElementById('transition-counter');
-    counter.value = parseInt(counter.value, 10) + 1;
-  }
+const makeHandler = opts => partialReturns(typeHandler({defaultHandler})(opts));
+
+const model = rosmaro({graph, bindings: makeBindings({makeHandler})});
+
+const saga = function* () {};
+
+const rootReducer = (state, action) => {
+  return makeReducer(model)(state, action)
 };
 
-const app = <RosmaroReact {...rosmaroOpts} />;
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(
+  rootReducer,
+  applyMiddleware(effectDispatcher, sagaMiddleware)
+);
+sagaMiddleware.run(saga);
 
-ReactDOM.render(app, document.getElementById('root'));
+const App = rosmaroComponent({
+  model,
+  selector: state => state
+})
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
 registerServiceWorker();

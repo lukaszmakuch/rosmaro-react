@@ -2,34 +2,34 @@
   "main": {
     "type": "graph",
     "nodes": {
-      "on": "on",
-      "off": "off"
+      "On": "On",
+      "Off": "Off"
     },
     "arrows": {
-      "on": {
+      "On": {
         "click": {
-          "target": "off",
+          "target": "Off",
           "entryPoint": "start"
         }
       },
-      "off": {
+      "Off": {
         "click": {
-          "target": "on",
+          "target": "On",
           "entryPoint": "start"
         }
       }
     },
     "entryPoints": {
       "start": {
-        "target": "off",
+        "target": "Off",
         "entryPoint": "start"
       }
     }
   },
-  "on": {
+  "On": {
     "type": "leaf"
   },
-  "off": {
+  "Off": {
     "type": "leaf"
   }
 }

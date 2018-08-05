@@ -3,11 +3,11 @@
   "license": "MIT",
   "description": "Visual automata-based programming for React",
   "keywords": [
-    "state machine",
+    "react",
     "automata-based programming",
     "finite state machine"
   ],
-  "version": "0.0.4",
+  "version": "0.0.5",
   "repository": {
     "type": "git",
     "url": "https://github.com/lukaszmakuch/rosmaro-react.git"
@@ -16,19 +16,19 @@
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
     "chromedriver": "^2.33.2",
     "jest": "^21.2.1",
-    "selenium-webdriver": "^3.6.0",
-    "hoek": "^4.2.1"
+    "selenium-webdriver": "^3.6.0"
   },
   "peerDependencies": {
-    "rosmaro": "0.7.x",
+    "rosmaro": "0.8.x",
+    "rosmaro-redux": "*",
+    "redux-saga": "*",
     "react": ">=15.0.0"
   },
   "main": "./lib/RosmaroReact.js",
   "scripts": {
-    "build": "./node_modules/.bin/babel ./src --out-dir ./lib --source-maps --presets es2015,react",
+    "build": "./node_modules/.bin/babel ./src --out-dir ./lib --presets es2015",
     "test": "./node_modules/.bin/jest ./test",
     "prepublish": "npm run build"
   }
