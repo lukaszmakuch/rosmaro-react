@@ -24,6 +24,7 @@
     "rosmaro": "0.8.x",
     "rosmaro-redux": "*",
     "redux-saga": "*",
+    "redux": "*",
     "react": ">=15.0.0"
   },
   "main": "./lib/RosmaroReact.js",

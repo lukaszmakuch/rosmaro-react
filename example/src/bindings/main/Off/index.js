@@ -1,17 +1,17 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-const View = connect()(({dispatch}) => <input
-  type="button"
-  id="off-button"
-  value="off"
-  onClick={() => dispatch({type: 'CLICK'})}
-  />);
+const View = connect()(({dispatch}) => 
+  <button
+    id="off-button"
+    onClick={() => dispatch({type: 'CLICK'})}
+    >off</button>
+);
 
 export default ({makeHandler}) => ({
   handler: makeHandler({
 
-    CLICK: () => ({arrow: 'click'}),
+    CLICK: () => ({arrow: 'clicked'}),
 
     RENDER: () => <View />,
   

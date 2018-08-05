@@ -10,18 +10,15 @@ import rosmaroComponent from 'rosmaro-react';
 import {makeReducer, effectDispatcher} from 'rosmaro-redux';
 import createSagaMiddleware from 'redux-saga';
 import {createStore, applyMiddleware} from 'redux';
-
 import registerServiceWorker from './registerServiceWorker';
 
 const makeHandler = opts => partialReturns(typeHandler({defaultHandler})(opts));
-
-const model = rosmaro({graph, bindings: makeBindings({makeHandler})});
+const bindings = makeBindings({makeHandler});
+const model = rosmaro({graph, bindings});
 
 const saga = function* () {};
 
-const rootReducer = (state, action) => {
-  return makeReducer(model)(state, action)
-};
+const rootReducer = makeReducer(model);
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
@@ -33,7 +30,7 @@ sagaMiddleware.run(saga);
 const App = rosmaroComponent({
   model,
   selector: state => state
-})
+});
 
 ReactDOM.render(
   <Provider store={store}>

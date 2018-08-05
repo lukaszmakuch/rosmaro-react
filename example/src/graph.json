@@ -7,13 +7,13 @@
     },
     "arrows": {
       "On": {
-        "click": {
+        "clicked": {
           "target": "Off",
           "entryPoint": "start"
         }
       },
       "Off": {
-        "click": {
+        "clicked": {
           "target": "On",
           "entryPoint": "start"
         }
